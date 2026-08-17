@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('payment_terms');
             $table->enum('status', ['active', 'inactive','banned'])->default('active');
-            $table->decimal('buying_total', 8, 2);
+            $table->decimal('buying_total', 10, 2);
             $table->timestamps();
         });
     }

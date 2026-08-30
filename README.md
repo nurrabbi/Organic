@@ -23,4 +23,4 @@ Secure user and employee management with detailed logs.# Organic
 
 ### **Screenshots of Organic project**
 
-![Project Screenshot](public\Screenshots\01. Organic Index.png)
+<img src="public\Screenshots\01. Organic Index.png" alt="Project Screenshot" width="100%">

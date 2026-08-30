@@ -16,66 +16,6 @@
 
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <h5 class="card-header">Product Category</h5>
-                    <div class="card-body">
-                        <form action="{{ route('product_category.store') }}" method="POST" enctype="multipart/form-data">
-                            @csrf
-                            <div class="card mb-4">
-                                <div class="card-body">
-                                    <div class="d-flex align-items-start align-items-sm-center gap-4 mb-4">
-                                        <!-- Changed ID to 'categoryAvatar' -->
-                                        <img src="{{ old('category_image') }}" alt="category-avatar" class="d-block rounded"
-                                            height="200" width="200" id="categoryAvatar">
-                                        <div class="button-wrapper">
-                                            <!-- Changed label 'for' to matching input ID -->
-                                            <label for="uploadCategory" class="btn btn-primary me-2 mb-4" tabindex="0">
-                                                <span class="d-none d-sm-block">Upload Category photo</span>
-                                                <i class="bx bx-upload d-block d-sm-none"></i>
-                                                <!-- Changed ID to 'uploadCategory' and name to 'category_image' -->
-                                                <input type="file" id="uploadCategory" name="category_image"
-                                                    class="form-control" accept="image/jpeg, image/png, image/gif" hidden>
-                                            </label>
-                                            <p class="text-muted mb-0">Allowed JPG, GIF or PNG. Max size of 2MB</p>
-                                        </div>
-                                    </div>
-                                </div>
-                                @error('image')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-icon-default-fullname">Category ID</label>
-                                <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-id-card"></i></span>
-                                    <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="id" value="{{ $categoryId }}" aria-label="01"
-                                        aria-describedby="basic-icon-default-fullname2" readonly>
-                                </div>
-                                @error('id')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <div class="mb-3">
-                                <label class="form-label" for="basic-icon-default-fullname">Category Name</label>
-                                <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-fullname2" class="input-group-text"><i
-                                            class="bx bx-user"></i></span>
-                                    <input type="text" class="form-control" id="basic-icon-default-fullname"
-                                        name="category_name" value="{{ old('category_name') }}" aria-label="Dry Fruits"
-                                        aria-describedby="basic-icon-default-fullname2">
-                                </div>
-                                @error('category_name')
-                                    <span class="text-danger">{{ $message }}</span>
-                                @enderror
-                            </div>
-                            <button type="submit" class="btn btn-success">Create</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
-                <div class="card mb-4">
                     <h5 class="card-header">Product Entry</h5>
                     <div class="card-body">
                         <form action="{{ route('products.store') }}" method="POST" enctype="multipart/form-data">

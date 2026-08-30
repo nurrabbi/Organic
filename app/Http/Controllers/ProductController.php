@@ -84,8 +84,8 @@ class ProductController extends Controller
 
     public function edit(int $id)
     {
-        $user = User::with('userDetail')->findOrFail($id);
-        return view('backend.products.edit', compact('user'));
+        $product = Product::with('details')->findOrFail($id);
+        return view('backend.products.edit', compact('product'));
     }
 
     public function update(Request $request, int $id)

@@ -26,12 +26,15 @@
                             <div class="card mb-4">
                                 <div class="card-body">
                                     <div class="d-flex align-items-start align-items-sm-center gap-4">
+                                        <!-- Changed ID to 'productAvatar' -->
                                         <img src="{{ $product->details->image }}" alt="product-avatar" class="block rounded"
                                             height="200" width="200" id="productAvatar">
                                         <div class="button-wrapper">
+                                            <!-- Changed label 'for' to matching input ID -->
                                             <label for="uploadProduct" class="btn btn-primary me-2 mb-4" tabindex="0">
                                                 <span class="d-none d-sm-block">Upload Product Image</span>
                                                 <i class="bx bx-upload d-block d-sm-none"></i>
+                                                <!-- Changed ID to 'uploadProduct' and name to 'product_image' -->
                                                 <input type="file" id="uploadProduct" name="product_image"
                                                     class="form-control" accept="image/jpeg, image/png, image/gif" hidden>
                                             </label>
@@ -140,8 +143,8 @@
                                     <span id="basic-icon-default-box" class="input-group-text"><i
                                             class="bx bx-coin"></i></span>
                                     <input type="number" class="form-control" id="basic-icon-default-box"
-                                        name="stock_quantity" value="{{ $product->details->stock_quantity }}" aria-label="10"
-                                        aria-describedby="basic-icon-default-box">
+                                        name="stock_quantity" value="{{ $product->details->stock_quantity }}"
+                                        aria-label="10" aria-describedby="basic-icon-default-box">
                                 </div>
                                 @error('stock_quantity')
                                     <span class="text-danger">{{ $message }}</span>
@@ -168,5 +171,32 @@
         </div>
     </div>
     <!-- / Content -->
+
+
+    <script>
+        function setupImagePreview(inputId, imgId) {
+            document.getElementById(inputId).addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if (file) {
+                    // Max size check (2MB)
+                    if (file.size > 2 * 1024 * 1024) {
+                        alert('File is too large! Maximum size allowed is 2MB.');
+                        this.value = '';
+                        return;
+                    }
+
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        document.getElementById(imgId).src = e.target.result;
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+        }
+
+        // Activate the preview logic for both inputs
+        setupImagePreview('uploadCategory', 'categoryAvatar');
+        setupImagePreview('uploadProduct', 'productAvatar');
+    </script>
 @endsection
 <!-- Content wrapper -->

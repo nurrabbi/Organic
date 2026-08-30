@@ -31,6 +31,8 @@ Secure user and employee management with detailed logs.# Organic
 
 <img src="public\Screenshots\02. User Home.png" alt="Project Screenshot" width="100%">
 
+<img src ="public\Screenshots\013. Logout Confirmation.png" alt="Project Screenshoot" width="100%">
+
 <img src="public\Screenshots\03. Shop.png" alt="Project Screenshot" width="100%">
 
 <img src="public\Screenshots\04. single products.png" alt="Project Screenshot" width="100%">
@@ -38,7 +40,6 @@ Secure user and employee management with detailed logs.# Organic
 <img src="public\Screenshots\05. cart.png" alt="Project Screenshot" width="100%">
 
 <img src="public\Screenshots\06. Checkout.png" alt="Project Screenshot" width="100%">
-
 
 <img src="public\Screenshots\07.getway.png" alt="Project Screenshot" width="100%">
 

@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\ProductDetail;
 use App\Models\UserDetail;
 
+use App\Models\ProductCategory;
 class HomeController extends Controller
 {
     /**
@@ -37,7 +38,8 @@ class HomeController extends Controller
     public function index()
     {
         $user = User::with('userDetail')->where('id', Auth::user()->id)->first();
-        return view('frontend.my_account', compact('user'));
+        $categories = ProductCategory::all();
+        return view('frontend.my_account', compact('user', 'categories'));
     }
 
     public function update(Request $request, int $id)

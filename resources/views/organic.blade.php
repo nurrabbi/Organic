@@ -1,3 +1,4 @@
+use Illuminate\Http\Request;
 <!DOCTYPE html>
 <html lang="en">
 

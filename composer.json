@@ -10,6 +10,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.3",
+        "ext-gd": "*",
         "intervention/image": "^4.3",
         "laravel/ai": "^0.11.0",
         "laravel/framework": "^13.17",
@@ -50,6 +51,11 @@
             "@php artisan migrate --force",
             "npm install --ignore-scripts",
             "npm run build"
+        ],
+        "vercel-build": [
+            "@php artisan config:cache",
+            "@php artisan route:cache",
+            "@php artisan view:cache"
         ],
         "dev": [
             "Composer\\Config::disableProcessTimeout",

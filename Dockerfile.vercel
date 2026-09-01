@@ -1,0 +1,42 @@
+FROM dunglas/frankenphp:1-php8.3
+
+WORKDIR /app
+
+ENV APP_ENV=production \
+    APP_DEBUG=false \
+    PORT=8080 \
+    PHP_OPCACHE_ENABLE=1
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    ca-certificates \
+    curl \
+    git \
+    unzip \
+    libicu-dev \
+    libonig-dev \
+    libzip-dev \
+    libpng-dev \
+    libjpeg-dev \
+    libfreetype6-dev \
+    libpq-dev \
+    && docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-install -j"$(nproc)" gd pdo_mysql pdo_pgsql mbstring zip exif pcntl intl bcmath \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
+
+COPY composer.json composer.lock ./
+RUN composer install --no-interaction --prefer-dist --no-progress --no-scripts --no-autoloader
+
+COPY package.json package-lock.json ./
+RUN npm install --no-fund --no-audit
+
+COPY . .
+
+RUN composer dump-autoload --optimize \
+    && npm run build \
+    && chmod -R 775 storage bootstrap/cache public
+
+EXPOSE 8080
+
+CMD ["frankenphp", "php-server", "--root", "/app/public", "--listen", ":8080"]

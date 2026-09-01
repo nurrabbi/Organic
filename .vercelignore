@@ -1,1 +1,10 @@
-/vendor
+node_modules
+vendor
+.git
+.github
+.vscode
+storage
+.env
+.env.*
+/tests
+public/build

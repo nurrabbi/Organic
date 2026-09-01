@@ -2,9 +2,14 @@
     "$schema": "https://www.schemastore.org/package.json",
     "private": true,
     "type": "module",
+    "engines": {
+        "node": ">=20.19.0 <23",
+        "npm": ">=10.0.0"
+    },
     "scripts": {
         "build": "vite build",
-        "dev": "vite"
+        "dev": "vite",
+        "vercel-build": "npm run build && php artisan config:cache && php artisan route:cache && php artisan view:cache"
     },
     "devDependencies": {
         "@popperjs/core": "^2.11.6",

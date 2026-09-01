@@ -65,18 +65,18 @@
                         <a class="nav-link dropdown-toggle pe-3" role="button" id="pages" data-bs-toggle="dropdown"
                             aria-expanded="false">Pages</a>
                         <ul class="dropdown-menu border-0 p-3 rounded-0 shadow" aria-labelledby="pages">
-                            <li><a href="index.html" class="dropdown-item">About Us </a></li>
-                            <li><a href="index.html" class="dropdown-item">Shop </a></li>
-                            <li><a href="index.html" class="dropdown-item">Single Product </a></li>
-                            <li><a href="index.html" class="dropdown-item">Cart </a></li>
-                            <li><a href="index.html" class="dropdown-item">Checkout </a></li>
-                            <li><a href="index.html" class="dropdown-item">Blog </a></li>
-                            <li><a href="index.html" class="dropdown-item">Single Post </a></li>
-                            <li><a href="index.html" class="dropdown-item">Styles </a></li>
-                            <li><a href="index.html" class="dropdown-item">Contact </a></li>
-                            <li><a href="index.html" class="dropdown-item">Thank You </a></li>
-                            <li><a href="index.html" class="dropdown-item">My Account </a></li>
-                            <li><a href="index.html" class="dropdown-item">404 Error </a></li>
+                            <li><a href="{{ asset('frontend/about.html') }}" class="dropdown-item">About Us </a></li>
+                            <li><a href="{{ asset('frontend/shop.html') }}" class="dropdown-item">Shop </a></li>
+                            <li><a href="{{ asset('frontend/single-product.html') }}" class="dropdown-item">Single Product </a></li>
+                            <li><a href="{{ asset('frontend/cart.html') }}" class="dropdown-item">Cart </a></li>
+                            <li><a href="{{ asset('frontend/checkout.html') }}" class="dropdown-item">Checkout </a></li>
+                            <li><a href="{{ asset('frontend/blog.html') }}" class="dropdown-item">Blog </a></li>
+                            <li><a href="{{ asset('frontend/single-post.html') }}" class="dropdown-item">Single Post </a></li>
+                            <li><a href="{{ asset('frontend/styles.html') }}" class="dropdown-item">Styles </a></li>
+                            <li><a href="{{ asset('frontend/contact.html') }}" class="dropdown-item">Contact </a></li>
+                            <li><a href="{{ asset('frontend/thank-you.html') }}" class="dropdown-item">Thank You </a></li>
+                            <li><a href="{{ asset('frontend/my-account.html') }}" class="dropdown-item">My Account </a></li>
+                            <li><a href="{{ asset('frontend/404.html') }}" class="dropdown-item">404 Error </a></li>
                         </ul>
                     </li>
                 </ul>

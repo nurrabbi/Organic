@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 use App\Models\ProductCategory;
 use App\Models\ProductDetail;
+use App\Models\Cart;
 class Product extends Model
 {
     // barcode, name, category_id(FK), selling_price
@@ -24,6 +25,11 @@ class Product extends Model
     public function supplier()
     {
         // return $this->belongsTo(Supplier::class, 'supplier_id', 'id');
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'product_id', 'id');
     }
     
 }

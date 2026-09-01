@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrganicController;
@@ -9,9 +10,9 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
+
 Route::get('/', [OrganicController::class, 'index']);
-
-
+// Route::get('/categories', [OrganicController::class, 'categories'])->name('nav.categories');
 
 Route::get('/NaN', function () {
     return view('not_found');
@@ -29,11 +30,11 @@ Route::get('/test', function () {
 Auth::routes(['verify' => true]);
 
 
-Route::get('/singleProduct/{id}', [OrganicController::class, 'showProduct'])->name('singleProduct');
-
-
 Route::resource('home', HomeController::class)->middleware('auth');
 Route::get('/admin', [HomeController::class, 'adminDashboard'])->name('admin.dashboard')->middleware('auth');
+
+
+Route::get('/singleProduct/{id}', [OrganicController::class, 'showProduct'])->name('singleProduct');
 
 
 
@@ -56,4 +57,4 @@ Route::resource('products', ProductController::class)->middleware('verified');
 Route::get('/products/{id}/image', [ProductController::class, 'getProductImage'])->name('products.image');
 Route::get('/product/{id}', [ProductController::class, 'singleProduct'])->name('single_product');
 
-
+Route::resource('carts', CartController::class)->middleware('verified');

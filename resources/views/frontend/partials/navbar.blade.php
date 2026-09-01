@@ -17,15 +17,15 @@
             </div>
             <div class="col-sm-6 offset-sm-2 offset-md-0 col-lg-4">
                 <div class="search-bar row bg-light p-2 rounded-4">
-                    <div class="col-md-4 d-none d-md-block">
+                    {{-- <div class="col-md-4 d-none d-md-block">
                         <select class="form-select border-0 bg-transparent">
                             <option>All Categories</option>
                             @foreach ($categories as $category)
                             <option value="{{ $category->id }}">{{ $category->category_name }}</option>
                             @endforeach
                         </select>
-                    </div>
-                    <div class="col-11 col-md-7">
+                    </div> --}}
+                    <div class="col-11 col-md-11">
                         <form action="index.html" class="text-center" id="search-form" method="post">
                             <input class="form-control border-0 bg-transparent"
                                 placeholder="Search for more than 20,000 products" type="text" />
@@ -66,52 +66,52 @@
                                 <a class="dropdown-item" href="{{ route('home.index') }}">My Account</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="about.html">About Us </a>
+                                <a class="dropdown-item" href="{{ asset('frontend/about.html') }}">About Us </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="shop.html">Shop </a>
+                                <a class="dropdown-item" href="{{ asset('frontend/shop.html') }}">Shop </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="single-product.html">Single Product</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/single-product.html') }}">Single Product</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="cart.html">Cart </a>
+                                <a class="dropdown-item" href="{{ asset('frontend/cart.html') }}">Cart </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="checkout.html">Checkout </a>
+                                <a class="dropdown-item" href="{{ asset('frontend/checkout.html') }}">Checkout </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="blog.html">Blog </a>
+                                <a class="dropdown-item" href="{{ asset('frontend/blog.html') }}">Blog </a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="single-post.html">Single Post</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/single-post.html') }}">Single Post</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="contact.html">Contact Us</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/contact.html') }}">Contact Us</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="transaction-gateway.html">Transaction Gateway</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/transaction-gateway.html') }}">Transaction Gateway</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="order-tracking.html">Order Tracking</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/order-tracking.html') }}">Order Tracking</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="messaging.html">Messaging</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/messaging.html') }}">Messaging</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="product-review.html">Product Review</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/product-review.html') }}">Product Review</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="feedback.html">Feedback</a>
+                                <a class="dropdown-item" href="{{ asset('frontend/feedback.html') }}">Feedback</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="404.html">404 Error </a>
+                                <a class="dropdown-item" href="{{ url('/NaN') }}">404 Error </a>
                             </li>
                             <li>
                                 <a class="dropdown-item" href="{{ route('login') }}">Login</a>
                             </li>
                             <li>
-                                <a class="dropdown-item" href="register.html">Register</a>
+                                <a class="dropdown-item" href="{{ route('register') }}">Register</a>
                             </li>
                         </ul>
                     </li>
@@ -166,8 +166,10 @@
                         </a>
                     </li>
                     <li>
-                        <a aria-controls="offcanvasCart" class="p-2 mx-1" data-bs-target="#offcanvasCart"
-                            data-bs-toggle="offcanvas" href="#" data-bs-toggle="tooltip"
+                        {{-- <a aria-controls="offcanvasCart" class="p-2 mx-1" data-bs-target="#offcanvasCart"
+                            data-bs-toggle="offcanvas" href="{{ route('carts.show', Auth::user()->id) }}" data-bs-toggle="tooltip"
+                            data-bs-placement="top" title="Cart"> --}}
+                        <a class="p-2 mx-1" href="{{ route('carts.show', Auth::user()->id) }}" data-bs-toggle="tooltip"
                             data-bs-placement="top" title="Cart">
                             <svg height="26" width="26">
                                 <use xlink:href="#cart"></use>

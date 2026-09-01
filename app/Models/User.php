@@ -12,6 +12,7 @@ use Illuminate\Notifications\Notifiable;
 
 use App\Models\UserDetail;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use App\Models\Cart;
 #[Fillable(['name', 'phone', 'email', 'password'])]
 #[Hidden(['password', 'remember_token'])]
 class User extends Authenticatable implements MustVerifyEmail
@@ -35,5 +36,10 @@ class User extends Authenticatable implements MustVerifyEmail
     public function userDetail(): HasOne
     {
         return $this->hasOne(UserDetail::class, 'user_id', 'id');
+    }
+
+    public function cart()
+    {
+        return $this->hasMany(Cart::class, 'user_id', 'id');
     }
 }

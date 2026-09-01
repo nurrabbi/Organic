@@ -14,15 +14,13 @@
                     <div class="d-flex align-items-end row">
                         <div class="col-sm-7">
                             <div class="card-body">
-                                <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
+                                <h5 class="card-title text-primary">Congratulations {{ Auth::user()->name }}! 🎉</h5>
                                 <p class="mb-4">
-                                    You have done <span class="fw-bold">72%</span> more sales today.
-                                    Check your new badge in
-                                    your profile.
+                                    You have ordered <span class="fw-bold">10</span> products this month.
                                 </p>
 
-                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">View
-                                    Badges
+                                <a href="javascript:;" class="btn btn-sm btn-outline-primary">
+                                    View Orders
                                 </a>
                             </div>
                         </div>
@@ -96,43 +94,32 @@
             <!-- Total Revenue -->
             <div class="col-12 col-lg-8 order-2 order-md-3 order-lg-2 mb-4">
                 <div class="card">
-                    <h5 class="card-header">Product List</h5>
+                    <h5 class="card-header">Cart List</h5>
                     <div class="table-responsive text-nowrap">
                         <table class="table table-hover">
                             <thead>
                                 <tr>
                                     <th>ID</th>
-                                    <th>Name</th>
-                                    <th>Price</th>
-                                    <th>Stock Quantity</th>
-                                    <th>Image</th>
+                                    <th>Cart Owner</th>
+                                    <th>Product</th>
+                                    <th>Quantity</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody class="table-border-bottom-0">
-                                @foreach ($products as $key => $product)
+                                @foreach ($carts as $key => $cart)
                                     <tr>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
                                             <strong>{{ ++$key }}</strong>
                                         </td>
                                         <td><i class="fab fa-angular fa-lg text-danger me-3"></i>
-                                            <strong>{{ $product->name }}</strong>
+                                            <strong>{{ $cart->user->name }}</strong>
                                         </td>
-                                        <td>{{ $product->selling_price }}</td>
-                                        <td>{{ $product->details->stock_quantity }}</td>
+                                        <td>{{ $cart->product->name }}</td>
                                         <td>
-                                            <ul
-                                                class="list-unstyled users-list m-0 avatar-group d-flex align-items-center">
-                                                <li data-bs-toggle="tooltip" data-popup="tooltip-custom"
-                                                    data-bs-placement="top" class="avatar avatar-xs pull-up"
-                                                    data-bs-original-title="Open Image">
-                                                    <a href="{{ $product->details->image ?? '' }}" data-bs-toggle="modal"
-                                                        data-bs-target="#imageModal"
-                                                        onclick="setModalImage('{{ route('products.image', $product->id) }}', '{{ $product->category_name }}')">
-                                                        <img src="{{ $product->details->image ?? '' }}"
-                                                            alt="{{ $product->name }}" class="rounded-square" />
-                                                </li>
-                                            </ul>
+                                            <span class="badge bg-label-primary me-1">
+                                                {{ $cart->quantity }}
+                                            </span>
                                         </td>
                                         <td>
                                             <div class="dropdown">
@@ -141,11 +128,9 @@
                                                     <i class="bx bx-dots-vertical-rounded"></i>
                                                 </button>
                                                 <div class="dropdown-menu">
-                                                    <a class="dropdown-item"
-                                                        href="{{ route('products.edit', $product->id) }}"><i
+                                                    <a class="dropdown-item" href="{{ route('carts.edit', $cart->id) }}"><i
                                                             class="bx bx-edit-alt me-1"></i> Edit</a>
-                                                    <form id="delete-form"
-                                                        action="{{ route('products.destroy', $product->id) }}"
+                                                    <form id="delete-form" action="{{ route('carts.destroy', $cart->id) }}"
                                                         method="POST">
                                                         @csrf
                                                         @method('DELETE')
@@ -168,7 +153,7 @@
                         <div class="demo-inline-spacing">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-sm justify-content-end">
-                                   {{ $products->links() }}
+                                    {{ $carts->links() }}
                                 </ul>
                             </nav>
                         </div>

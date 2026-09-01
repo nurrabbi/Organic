@@ -37,44 +37,47 @@
                     </div>
                 </div>
                 <div class="col-lg-6">
-                    <div class="section-kicker">Fresh produce</div>
-                    <h2 class="display-5 mt-2">{{ $product->name }}</h2>
-                    <div class="d-flex gap-2 align-items-center mb-3"><span class="rating">★★★★★</span><a
-                            href="product-review.html">(42 reviews)</a></div>
-                    <div class="d-flex align-items-center gap-3 mb-4"><del class="text-secondary fs-5">$24.00</del><span
-                            class="fs-2 fw-bold text-dark">${{ $product->selling_price }}</span>
-                        <span class="badge text-bg-danger">10% OFF</span>
-                    </div>
-                    <p class="fs-5 text-secondary">Soft, wholesome and made for everyday breakfast and lunch moments.
-                    </p>
-                    <ul class="list-unstyled lh-lg">
-                        <li>✓ Farm-inspired quality</li>
-                        <li>✓ Freshly packed</li>
-                        <li>✓ Fast delivery</li>
-                    </ul>
-                    <div class="d-flex flex-wrap gap-3 align-items-center my-4">
-                        <div class="d-flex border rounded-1" data-qty>
-                            <button class="btn btn-soft rounded-0" data-minus type="button">
-                                -
-                            </button>
-                            <input class="form-control border-0 text-center" style="width:70px" value="1">
-                            <button class="btn btn-soft rounded-0" data-plus type="button">
-                                +
-                            </button>
+                    <form action="{{ route('carts.store') }}" method="POST">
+                        @csrf
+                        <input type="hidden" name="product_id" value="{{ $product->id }}">
+                        <div class="section-kicker">Fresh produce</div>
+                        <h2 class="display-5 mt-2">{{ $product->name }}</h2>
+                        <div class="d-flex gap-2 align-items-center mb-3"><span class="rating">★★★★★</span><a
+                                href="product-review.html">(42 reviews)</a></div>
+                        <div class="d-flex align-items-center gap-3 mb-4"><del class="text-secondary fs-5">$24.00</del><span
+                                class="fs-2 fw-bold text-dark">${{ $product->selling_price }}</span>
+                            <span class="badge text-bg-danger">10% OFF</span>
                         </div>
-                        <a href="cart.html" class="btn btn-primary rounded-pill px-4">Add to Cart</a>
-                        <a href="product-review.html" class="btn btn-outline-dark rounded-pill px-4">Write a Review</a>
-                    </div>
-                    <div class="border-top pt-4">
-                        <div class="row g-3">
-                            <div class="col-6"><small class="text-secondary">SKU</small>
-                                <div class="fw-semibold">ORG-BRD-001</div>
+                        <p class="fs-5 text-secondary">Soft, wholesome and made for everyday breakfast and lunch moments.
+                        </p>
+                        <ul class="list-unstyled lh-lg">
+                            <li>✓ Farm-inspired quality</li>
+                            <li>✓ Freshly packed</li>
+                            <li>✓ Fast delivery</li>
+                        </ul>
+                        <div class="d-flex flex-wrap gap-3 align-items-center my-4">
+                            <div class="d-flex border rounded-1" data-qty>
+                                <button class="btn btn-soft rounded-0" data-minus type="button">
+                                    -
+                                </button>
+                                <input class="form-control border-0 text-center" type="number" name="quantity" style="width:70px" value="1">
+                                <button class="btn btn-soft rounded-0" data-plus type="button">
+                                    +
+                                </button>
                             </div>
-                            <div class="col-6"><small class="text-secondary">Category</small>
-                                <div class="fw-semibold">Bakery & Bread</div>
+                            <button type="submit" class="btn btn-primary rounded-pill px-4">Add to Cart</button>
+                            <a href="product-review.html" class="btn btn-outline-dark rounded-pill px-4">Write a Review</a>
+                        </div>
+                        <div class="border-top pt-4">
+                            <div class="row g-3">
+                                <div class="col-6"><small class="text-secondary">SKU</small>
+                                    <div class="fw-semibold">ORG-BRD-001</div>
+                                </div>
+                                <div class="col-6"><small class="text-secondary">Category</small>
+                                    <div class="fw-semibold">Bakery & Bread</div>
+                                </div>
                             </div>
                         </div>
-                    </div>
                 </div>
             </div>
             <div class="row mt-5">

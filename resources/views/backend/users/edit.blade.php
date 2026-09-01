@@ -146,8 +146,9 @@
                             <div class="mb-3">
                                 <label class="form-label" for="basic-icon-default-fullname">Coins</label>
                                 <div class="input-group input-group-merge">
-                                    <span id="basic-icon-default-coin" class="input-group-text"><i
-                                            class="bx bx-coin"></i></span>
+                                    <span id="basic-icon-default-coin" class="input-group-text">
+                                        <i class="bx bx-coin"></i>
+                                    </span>
                                     <input type="number" class="form-control" id="basic-icon-default-fullname"
                                         name="coins" value="{{ $user->userDetail?->coins ?? '' }}" aria-label="10"
                                         aria-describedby="basic-icon-default-fullname2" readonly>

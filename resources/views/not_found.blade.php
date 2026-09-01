@@ -10,7 +10,7 @@
                 The page you are looking for does not exist or may have moved.
             </p>
             <div class="d-flex justify-content-center gap-3 mt-4">
-                <a href="{{ route('home') }}" class="btn btn-primary rounded-pill px-4">Back to Home</a>
+                <a href="{{ route('home.index') }}" class="btn btn-primary rounded-pill px-4">Back to Home</a>
                 <a href="{{ url('/') }}" class="btn btn-outline-dark rounded-pill px-4">Continue Shopping</a>
             </div>
         </div>

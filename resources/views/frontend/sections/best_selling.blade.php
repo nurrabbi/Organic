@@ -10,7 +10,7 @@
                         <div class="demo-inline-spacing">
                             <nav aria-label="Page navigation">
                                 <ul class="pagination pagination-sm justify-content-end">
-                                   {{ $products->links() }}
+                                    {{ $products->links() }}
                                 </ul>
                             </nav>
                         </div>
@@ -18,6 +18,9 @@
                 </div>
             </div>
         </div>
+        @if ($errors->any())
+            <div class="alert alert-danger">{{ $errors->first() }}</div>
+        @endif
         <div class="row">
             <div class="col-md-12">
                 <div
@@ -27,8 +30,8 @@
                             <div class="product-item">
                                 <figure>
                                     <a href="{{ route('singleProduct', $product->id) }}" title="Product Title">
-                                        <img src="{{ $product->details->image }}"
-                                            alt="Product Thumbnail" class="tab-image">
+                                        <img src="{{ $product->details->image }}" alt="Product Thumbnail"
+                                            class="tab-image">
                                     </a>
                                 </figure>
                                 <div class="d-flex flex-column text-center">
@@ -61,25 +64,32 @@
                                             OFF</span>
                                     </div>
                                     <div class="button-area p-3 pt-0">
-                                        <div class="row g-1 mt-2">
-                                            <div class="col-3"><input type="number" name="quantity"
-                                                    class="form-control border-dark-subtle input-number quantity"
-                                                    value="1"></div>
-                                            <div class="col-7"><a href="#"
-                                                    class="btn btn-primary rounded-1 p-2 fs-7 btn-cart">
-                                                    <svg width="18" height="18">
-                                                        <use xlink:href="#cart"></use>
-                                                    </svg> Add to Cart
-                                                </a>
+                                        <form action="{{ route('carts.store') }}" method="POST">
+                                            @csrf
+                                            <input type="hidden" name="product_id" value="{{ $product->id }}">
+                                            <div class="row g-1 mt-2">
+                                                <div class="col-3">
+                                                    <input type="number" name="quantity"
+                                                        class="form-control border-dark-subtle input-number quantity"
+                                                        value="1" min="1">
+                                                </div>
+                                                <div class="col-7">
+                                                    <button type="submit"
+                                                        class="btn btn-primary rounded-1 p-2 fs-7 btn-cart">
+                                                        <svg width="18" height="18">
+                                                            <use xlink:href="#cart"></use>
+                                                        </svg> Add to Cart
+                                                    </button>
+                                                </div>
+                                                <div class="col-2"><a href="#"
+                                                        class="btn btn-outline-dark rounded-1 p-2 fs-6">
+                                                        <svg width="18" height="18">
+                                                            <use xlink:href="#heart"></use>
+                                                        </svg>
+                                                    </a>
+                                                </div>
                                             </div>
-                                            <div class="col-2"><a href="#"
-                                                    class="btn btn-outline-dark rounded-1 p-2 fs-6">
-                                                    <svg width="18" height="18">
-                                                        <use xlink:href="#heart"></use>
-                                                    </svg>
-                                                </a>
-                                            </div>
-                                        </div>
+                                        </form>
                                     </div>
                                 </div>
                             </div>

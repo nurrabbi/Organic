@@ -61,10 +61,28 @@ class HomeController extends Controller
         $user->save();
 
         $userDetail = UserDetail::where('user_id', $id)->first();
-        if ($request->hasFile('image')) {
-            $directory = 'images\users';
-            $file = $request->file('image');
-            $userDetail->image = imageUpload($file, 800, 600, $directory);
+
+        if(!$userDetail){
+            $userDetail = new UserDetail();
+            $userDetail->user_id = $id;
+            if ($request->hasFile('image')) {
+                $directory = 'images\users';
+                $file = $request->file('image');
+                $userDetail->image = imageUpload($file, 800, 600, $directory);
+            }
+        } elseif($userDetail){
+            if ($request->hasFile('image')) {
+                if ($userDetail->image) {
+                    $oldImagepath = parse_url($userDetail->image, PHP_URL_PATH);
+                    $oldDirectory = public_path($oldImagepath);
+                    if (file_exists($oldDirectory)) {
+                        unlink($oldDirectory);
+                    }
+                }
+                $NewDirectory = 'images\users';
+                $file = $request->file('image');
+                $userDetail->image = imageUpload($file, 800, 600, $NewDirectory);
+            }
         }
         $userDetail->dob = $request->dob;
         $userDetail->address = $request->address;

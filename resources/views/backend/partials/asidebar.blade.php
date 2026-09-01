@@ -126,6 +126,27 @@
         </li>
         <!-- /products -->
 
+        <!-- carts -->
+        <li class="menu-item">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+                <i class="menu-icon tf-icons bx bx-cart"></i>
+                <div data-i18n="Carts">Carts</div>
+            </a>
+            <ul class="menu-sub">
+                <li class="menu-item">
+                    <a href="{{ route('carts.index') }}" class="menu-link">
+                        <div data-i18n="Basic">Carts List</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="" class="menu-link">
+                        <div data-i18n="Basic">Customize Cart</div>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <!-- /carts -->
+
 
 
 
